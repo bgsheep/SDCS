@@ -1,0 +1,32 @@
+
+syntax = "proto3";
+
+package SDCS;
+
+service RemoteCall {
+  rpc Store(StoreRequest) returns (Reply) {}
+
+  rpc Get(GetandRemoveRequest) returns (Reply) {}
+  
+  rpc Remove(GetandRemoveRequest) returns (Reply) {}
+
+  rpc NotifyNext(EmptyMessage) returns (Reply) {}
+}
+
+message EmptyMessage{
+  
+}
+
+message StoreRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message GetandRemoveRequest{
+  string key = 1;
+}
+
+// The response message containing the greetings
+message Reply {
+  string reply_message = 1;
+}
